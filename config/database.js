@@ -17,8 +17,4 @@ exports.mongoConnect = () => {
     dbConnection.on("error", console.error.bind(console, 'Mongodb connection error'));
 }
 
-/*mongoose.connect("mongodb://localhost:27017/collectionName", {
-   useNewUrlParser: true,
-   useUnifiedTopology: true
-});*/
 

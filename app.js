@@ -6,12 +6,13 @@ const logger = require('morgan');
 
 // Get database
 const database = require('./config/database');
+//authentication 
+const auth = require('./auth/main_auth');
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
 //employee
 const empleadosRouter = require('./routes/empleados.router')
 const usuariosRouter = require('./routes/usuarios.router')
+const usersRouter = require('./routes/users.router')
 
 const app = express();
 
@@ -25,11 +26,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Mongo connection 
 database.mongoConnect();
 
-
-//routers 
-
-app.use('/', indexRouter);
+//routers
 app.use('/users', usersRouter);
+app.use(auth);
 app.use('/empleados', empleadosRouter);
 app.use('/usuarios', usuariosRouter);
 
